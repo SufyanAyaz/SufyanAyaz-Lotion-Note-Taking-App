@@ -1,5 +1,15 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
+import './index.css';
+import Layout from "./Layout";
+
 function App() {
-  return <h1>Lotion</h1>;
+  return <Routes>
+    <Route element={<Layout />}>
+      <Route path="/" element={<Navigate to="/notes" replace={true} />}>
+        <Route path="notes" element={<Layout />} />
+      </Route>
+    </Route>
+  </Routes>;
 }
 
 export default App;
