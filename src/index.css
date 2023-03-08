@@ -39,6 +39,7 @@ h1.menu-icon {
   font-size: 1.75rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
 }
 
 h1.main-header {
@@ -70,6 +71,8 @@ section.note-column {
   border-right: 1px solid rgb(135, 135, 135);
   height: 100%;
   width: 25vw;
+  display: flex;
+  flex-direction: column;
 }
 
 div.note-header {
@@ -88,12 +91,193 @@ h2.note-header {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+h2.note-header-icon {
+  height: 100%;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2.note-header-icon:hover {
+  background: purple;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
 div.note-collection {
   height: 90%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+button.note {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: slateblue;
+  height: 15%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 section.notes {
   height: 100%;
   width: 75vw;
+}
+
+div.initial-note-space {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2.inital-note-space-text {
+  color: gray;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: oblique;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+div.note-body-header {
+  border-bottom: 1px solid black;
+  padding-left: 1%;
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+div.title-content {
+  height: 100%;
+  width: 84%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+input.title-text {
+  border: none;
+  height: 50%;
+  width: 100%;
+  color: black;
+  outline: none;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+input.title-text::placeholder {
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+div.title-display-text {
+  padding-left: 10px;
+  height: 50%;
+  width: 100%;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: cursive;
+}
+
+div.time-display-text {
+  padding-left: 10px;
+  color: gray;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: cursive;
+}
+
+div.note-body-display {
+  height: 85%;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 1.125rem;
+}
+
+input.date-time {
+  border: none;
+  outline: none;
+  height: 40%;
+  width: 25%;
+}
+
+div.button-div {
+  height: 100%;
+  width: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+button.save {
+  height: 100%;
+  width: 50%;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: cursive;
+}
+
+button.save:hover {
+  background: purple;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+button.delete {
+  height: 100%;
+  width: 50%;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: cursive;
+}
+
+button.delete:hover {
+  background: purple;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+button.edit {
+  height: 100%;
+  width: 50%;
+  background: none;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: cursive;
+}
+
+button.edit:hover {
+  background: purple;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.note-body-editor {
+  height: 85%;
+  width: 100%;
 }
