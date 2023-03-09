@@ -19,7 +19,8 @@ function App() {
   })
 
   const [note, setNote] = useState(localizeNoteData());
-  const [num, setNum] = useState(localizeNumData())
+  const [num, setNum] = useState(localizeNumData());
+  const [currentNote, setCurrentNote] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("note", JSON.stringify(note))
@@ -59,12 +60,16 @@ function App() {
     })
 
     setNote(upToDateNotes)
-    // return note.find(note => note.noteNum === noteIdentification)
   };
 
   const deleteNote = (deleteNoteIdentification) => {
-    // const arrayWithoutDeleted = note.filter((note) => note.noteNum !== deleteNoteIdentification);
-    setNote(note.filter(note.noteNum != deleteNoteIdentification))
+    const arrayWithoutDeleted = note.filter((note) => note.noteNum !== deleteNoteIdentification)
+    for (let i = 0, j = 1; i < num - 2; i++, j++) {
+      arrayWithoutDeleted[i].noteNum = j
+    }
+
+    setNote([...arrayWithoutDeleted])
+    setNum(num - 1)
   }
 
 
@@ -72,13 +77,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/notes" replace={true} />}>
       </Route>
-      <Route element={<Layout note={note} createNote={createNote} num={num} />}>
+      <Route element={<Layout note={note} createNote={createNote} num={num} currentNote={currentNote} setCurrentNote={setCurrentNote} />}>
         <Route path="/notes" element={<Notes />} />
         <Route path="/notes/:noteId/edit" element={<NotePage update={update} num={num} note={note} deleteNote={deleteNote} />}></Route>
         <Route path="/notes/:noteId" element={<NoteDisplay note={note} num={num} deleteNote={deleteNote} />}></Route>
       </Route>
-
-
     </Routes>
   )
 }

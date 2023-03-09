@@ -7,9 +7,9 @@ function NotePage({ update, num, note, deleteNote }) {
     const navigate = useNavigate();
     const { noteId } = useParams();
 
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [time, setTime] = useState('');
+    const [title, setTitle] = useState(note[noteId - 1].title);
+    const [content, setContent] = useState(note[noteId - 1].content);
+    const [time, setTime] = useState(note[noteId - 1].time);
 
     const options = {
         year: "numeric",
@@ -28,37 +28,35 @@ function NotePage({ update, num, note, deleteNote }) {
     };
 
     const updateTitle = (newTitle) => {
-        setTitle(newTitle ? newTitle : note[noteId - 1].title)
+        setTitle(newTitle)
     }
 
     const updateContent = (newContent) => {
         // setContent(newContent.replace(/(<([^>]+)>)/ig, ''))
-        setContent(newContent ? newContent : note[noteId - 1].content)
+        setContent(newContent)
     }
 
     const updateTime = (newTime) => {
         // setTime(formatDate(Date.parse(newTime)))
-        setTime(newTime ? newTime : note[noteId - 1].time)
+        setTime(newTime)
     }
 
     return (
         <>
-            <section className="notes">
-                <div className="note-body-header">
-                    <div className="title-content">
-                        <input type="text" id="text" className="title-text" placeholder='Untitled' onChange={(e) => updateTitle(e.target.value)} defaultValue={note[noteId - 1].title}></input>
-                        <input type="datetime-local" id="date-time" className="date-time" onChange={(e) => updateTime(e.target.value)} defaultValue={note[noteId - 1].time}></input>
-                    </div>
-                    <div className="button-div">
-                        <button className="save" onClick={() => { update(noteId, title, content, time); navigate(`/notes/${noteId}`) }}>Save</button>
-                        <button className="delete" onClick={() => { if (window.confirm("Are you sure")) { deleteNote(noteId); navigate(`/notes/${noteId >= 2 ? noteId - 1 : ""}`) } }}>Delete</button>
-                    </div>
+            <div className="note-body-header">
+                <div className="title-content">
+                    <input type="text" id="text" className="title-text" placeholder='Untitled' onChange={(e) => updateTitle(e.target.value)} defaultValue={note[noteId - 1].title}></input>
+                    <input type="datetime-local" id="date-time" className="date-time" placeholder={formatDate(Date.now())} onChange={(e) => updateTime(e.target.value)} defaultValue={note[noteId - 1].time}></input>
                 </div>
+                <div className="button-div">
+                    <button className="save" onClick={() => { update(noteId, title, content, time); navigate(`/notes/${noteId}`) }}>Save</button>
+                    <button className="delete" onClick={() => { if (window.confirm("Are you sure")) { deleteNote(Number(noteId)); navigate(`/notes`) } }}>Delete</button>
+                </div>
+            </div>
 
-                <div className="note-body-editor" onChange={(e) => updateContent(e.target.value)}>
-                    <ReactQuill className='note-body-editor' onChange={updateContent} defaultValue={note[noteId - 1].content} />
-                </div>
-            </section>
+            <div className="note-body-editor" onChange={(e) => updateContent(e.target.value)}>
+                <ReactQuill className='note-body-editor' onChange={updateContent} placeholder='Type your note here...' defaultValue={note[noteId - 1].content} />
+            </div>
         </>
     );
 };

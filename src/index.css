@@ -1,18 +1,23 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  overflow-x: hidden;
 }
 
 header {
   height: 12.5vh;
+  width: 100vw;
 }
 
 nav.nav-bar {
   height: 100%;
-  border-bottom: 1px solid rgb(135, 135, 135);
+  width: 100vw;
+  border-bottom: 1px solid rgb(220, 220, 220);
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -20,9 +25,10 @@ span.nav-element1 {
   height: 100%;
   width: 33%;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* margin-left: auto; */
 }
 
 span.nav-element2 {
@@ -35,11 +41,21 @@ span.nav-element2 {
 }
 
 h1.menu-icon {
+  height: 99%;
+  width: 15%;
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1.menu-icon:hover {
+  background-color: gray;
+  color: whitesmoke;
 }
 
 h1.main-header {
@@ -63,20 +79,25 @@ span.nav-element3 {
 }
 
 main.notes {
-  height: 87.5vh;
+  height: 100vh;
+  width: 100vw;
   display: flex;
 }
 
 section.note-column {
-  border-right: 1px solid rgb(135, 135, 135);
-  height: 100%;
-  width: 25vw;
+  border-right: 1px solid rgb(220, 220, 220);
+  height: 100vh;
+  width: 25%;
   display: flex;
   flex-direction: column;
 }
 
+section.column-hidden {
+  display: none;
+}
+
 div.note-header {
-  border-bottom: 2px solid rgb(135, 135, 135);
+  border-bottom: 2px solid rgb(199, 199, 199);
   height: 10%;
   width: 100%;
   display: flex;
@@ -92,35 +113,40 @@ h2.note-header {
 }
 
 h2.note-header-icon {
-  height: 100%;
+  background-color: whitesmoke;
+  height: 95%;
   width: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.875rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 h2.note-header-icon:hover {
-  background: purple;
+  background: rgb(66, 60, 82);
   color: whitesmoke;
   cursor: pointer;
 }
 
 div.note-collection {
-  height: 90%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 button.note {
-  border-top: 1px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   border-bottom: 1px solid black;
-  background-color: slateblue;
-  height: 15%;
+  background-color: rgb(230, 227, 227);
+  height: 20%;
   width: 100%;
   cursor: pointer;
   display: flex;
@@ -129,9 +155,62 @@ button.note {
   justify-content: flex-start;
 }
 
+button.note:hover {
+  background-color: rgb(66, 60, 82);
+  color: whitesmoke !important;
+}
+
+button.selected {
+  background-color: rgb(66, 60, 82) !important;
+  color: whitesmoke;
+}
+
+div.note {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+div.note-sub {
+  height: 100%;
+  width: 100%;
+  padding-top: 15px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+h2.note-property {
+  margin: 0;
+  font-size: 2.25rem;
+  font-family: cursive;
+}
+
+h3.note-property {
+  margin: 0;
+  font-size: 1.125rem;
+  font-family: cursive;
+  color: gray;
+}
+
+p.note-property {
+  margin: 0;
+  font-size: 1.125rem;
+  font-family: cursive;
+}
+
 section.notes {
   height: 100%;
-  width: 75vw;
+  width: 75%;
+}
+
+section.main-hidden {
+  width: 100vw !important;
 }
 
 div.initial-note-space {
@@ -151,7 +230,7 @@ h2.inital-note-space-text {
 }
 
 div.note-body-header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(220, 220, 220);
   padding-left: 1%;
   height: 15%;
   width: 100%;
@@ -171,6 +250,7 @@ div.title-content {
 
 input.title-text {
   border: none;
+  background-color: whitesmoke;
   height: 50%;
   width: 100%;
   color: black;
@@ -181,6 +261,7 @@ input.title-text {
 }
 
 input.title-text::placeholder {
+  background-color: whitesmoke;
   color: black;
   font-size: 2rem;
   font-weight: bold;
@@ -214,6 +295,7 @@ div.note-body-display {
 }
 
 input.date-time {
+  background-color: whitesmoke;
   border: none;
   outline: none;
   height: 40%;
@@ -240,7 +322,7 @@ button.save {
 }
 
 button.save:hover {
-  background: purple;
+  background: rgb(66, 60, 82);
   color: whitesmoke;
   cursor: pointer;
 }
@@ -256,7 +338,7 @@ button.delete {
 }
 
 button.delete:hover {
-  background: purple;
+  background: rgb(66, 60, 82);
   color: whitesmoke;
   cursor: pointer;
 }
@@ -272,12 +354,12 @@ button.edit {
 }
 
 button.edit:hover {
-  background: purple;
+  background: rgb(66, 60, 82);
   color: whitesmoke;
   cursor: pointer;
 }
 
 .note-body-editor {
-  height: 85%;
+  height: 90%;
   width: 100%;
 }

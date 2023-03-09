@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-function NoteDisplay({ note, num }) {
+function NoteDisplay({ note, num, deleteNote }) {
     const navigate = useNavigate();
     const { noteId } = useParams();
 
@@ -26,24 +26,23 @@ function NoteDisplay({ note, num }) {
         return formatted;
     };
 
+    // document.getElementById("body-display").innerHTML = note[noteId - 1].content;
+
     return (
         <>
-            <section className="notes">
-                <div className="note-body-header">
-                    <div className="title-content">
-                        <div className="title-display-text">{note[noteId - 1].title}</div>
-                        <div className="time-display-text">{formatDate(note[noteId - 1].time)}</div>
-                    </div>
-                    <div className="button-div">
-                        <button className="edit" onClick={() => { navigate(`/notes/${num - 1}/edit`) }}>Edit</button>
-                        <button className="delete">Delete</button>
-                    </div>
+            <div className="note-body-header">
+                <div className="title-content">
+                    <div className="title-display-text">{note[noteId - 1].title}</div>
+                    <div className="time-display-text">{formatDate(note[noteId - 1].time)}</div>
                 </div>
+                <div className="button-div">
+                    <button className="edit" onClick={() => { navigate(`/notes/${note[noteId - 1].noteNum}/edit`) }}>Edit</button>
+                    <button className="delete" onClick={() => { if (window.confirm("Are you sure")) { deleteNote(Number(noteId)); navigate(`/notes`) } }}>Delete</button>
+                </div>
+            </div>
 
-                <div className="note-body-display">
-                    {note[noteId - 1].content}
-                </div>
-            </section>
+            <div className="note-body-display" id="body-display" dangerouslySetInnerHTML={{ __html: note[noteId - 1].content }}>
+            </div>
         </>
     );
 };
