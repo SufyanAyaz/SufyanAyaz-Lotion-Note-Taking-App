@@ -9,6 +9,7 @@ body {
 header {
   height: 12.5vh;
   width: 100vw;
+  background-color: rgb(66, 60, 82);
 }
 
 nav.nav-bar {
@@ -28,7 +29,6 @@ span.nav-element1 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  /* margin-left: auto; */
 }
 
 span.nav-element2 {
@@ -54,12 +54,13 @@ h1.menu-icon {
 }
 
 h1.menu-icon:hover {
-  background-color: gray;
-  color: whitesmoke;
+  background-color: rgb(220, 220, 220);
+  color: rgb(66, 60, 82);
 }
 
 h1.main-header {
   margin: 0;
+  color: whitesmoke;
   font-size: 2.5rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
@@ -67,7 +68,7 @@ h1.main-header {
 
 h3.sub-header {
   margin: 0;
-  color: rgb(105, 105, 105);
+  color: rgb(175, 175, 175);
   font-size: 1rem;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
@@ -136,8 +137,21 @@ div.note-collection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
+}
+
+div.note-collection-text {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(165, 165, 165);
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-style: oblique;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 button.note {
@@ -222,7 +236,7 @@ div.initial-note-space {
 }
 
 h2.inital-note-space-text {
-  color: gray;
+  color: rgb(170, 170, 170);
   font-size: 1.5rem;
   font-weight: 700;
   font-style: oblique;

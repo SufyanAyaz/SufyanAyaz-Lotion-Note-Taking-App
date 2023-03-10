@@ -3,7 +3,7 @@ import 'react-quill/dist/quill.snow.css'
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
-function NotePage({ update, num, note, deleteNote }) {
+function NotePage({ update, note, deleteNote }) {
     const navigate = useNavigate();
     const { noteId } = useParams();
 
@@ -32,12 +32,10 @@ function NotePage({ update, num, note, deleteNote }) {
     }
 
     const updateContent = (newContent) => {
-        // setContent(newContent.replace(/(<([^>]+)>)/ig, ''))
         setContent(newContent)
     }
 
     const updateTime = (newTime) => {
-        // setTime(formatDate(Date.parse(newTime)))
         setTime(newTime)
     }
 

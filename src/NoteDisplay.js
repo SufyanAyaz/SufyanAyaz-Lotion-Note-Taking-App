@@ -1,14 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
-function NoteDisplay({ note, num, deleteNote }) {
+function NoteDisplay({ note, deleteNote }) {
     const navigate = useNavigate();
     const { noteId } = useParams();
-
-
-    // const x = note.find(note => note.noteNum === (noteId - 1))
-    // console.log(x)
-    // console.log(noteId);
-    // console.log(note[noteId - 1]);
-    // console.log(note[noteId - 1].title);
 
     const options = {
         year: "numeric",
@@ -25,8 +18,6 @@ function NoteDisplay({ note, num, deleteNote }) {
         }
         return formatted;
     };
-
-    // document.getElementById("body-display").innerHTML = note[noteId - 1].content;
 
     return (
         <>

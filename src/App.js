@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { v4 as uuid } from 'uuid';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 import Layout from "./Layout";
@@ -33,7 +32,6 @@ function App() {
   const createNote = () => {
 
     const newNoteInfo = {
-      noteId: uuid(),
       title: "Untitled",
       content: "...",
       time: Date.now(),
@@ -46,9 +44,8 @@ function App() {
 
   const update = (noteIdentification, newTitle, newContent, newTime) => {
     const upToDateNotes = note.map((note) => {
-      if (note.noteNum == noteIdentification) {
+      if (note.noteNum === noteIdentification) {
         return {
-          noteId: note.noteId,
           title: newTitle,
           content: newContent,
           time: newTime,
@@ -65,7 +62,7 @@ function App() {
   const deleteNote = (deleteNoteIdentification) => {
     const arrayWithoutDeleted = note.filter((note) => note.noteNum !== deleteNoteIdentification)
     for (let i = 0, j = 1; i < num - 2; i++, j++) {
-      arrayWithoutDeleted[i].noteNum = j
+      arrayWithoutDeleted[i].noteNum = j;
     }
 
     setNote([...arrayWithoutDeleted])

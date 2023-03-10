@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 function Layout({ note, createNote, num, currentNote, setCurrentNote }) {
     const navigate = useNavigate();
+    const { noteId } = useParams();
     const changePage = (number) => {
         navigate(`/notes/${number}`)
     }
@@ -28,7 +29,7 @@ function Layout({ note, createNote, num, currentNote, setCurrentNote }) {
         return formatted;
     };
 
-    return (
+    return note[noteId - 1] ? (
         <>
             <header className="nav">
                 <nav className="nav-bar">
@@ -57,12 +58,43 @@ function Layout({ note, createNote, num, currentNote, setCurrentNote }) {
                                         <div className="note-sub">
                                             <h2 className="note-property">{note.title}</h2>
                                             <h3 className="note-property">{formatDate(note.time)}</h3>
-                                            <p className="note-property" dangerouslySetInnerHTML={{ __html: note.content }}></p>
+                                            <p className="note-property" dangerouslySetInnerHTML={{ __html: note.content.substring(0, 50) + "..." }}></p>
                                         </div>
                                     </div>
                                 </button>
                             </>)
                         })}
+                    </div>:<div>No New Notes</div>
+                </section>
+
+                <section className="notes" id="main-note-area">
+                    <Outlet />
+                </section>
+            </main>
+        </>
+    ) : (
+        <>
+            <header className="nav">
+                <nav className="nav-bar">
+                    <span className="nav-element1 menu-icon">
+                        <h1 className="menu-icon" onClick={toggle}>&#9776;</h1>
+                    </span>
+                    <span className="nav-element2">
+                        <h1 className="main-header">Lotion</h1>
+                        <h3 className="sub-header">Like Notion, But Worse</h3>
+                    </span>
+                    <span className="nav-element3"></span>
+                </nav>
+            </header>
+
+            <main className="notes">
+                <section className="note-column" id="column">
+                    <div className="note-header">
+                        <h2 className="note-header">Notes</h2>
+                        <h2 className="note-header-icon" id="create-note" onClick={() => { createNote(); navigate(`/notes/${num}/edit`) }}>&#43;</h2>
+                    </div>
+                    <div className="note-collection" id="note-collection">
+                        <div className="note-collection-text">No New Notes</div>
                     </div>
                 </section>
 
@@ -71,6 +103,7 @@ function Layout({ note, createNote, num, currentNote, setCurrentNote }) {
                 </section>
             </main>
         </>
-    );
+    )
+        ;
 };
 export default Layout;
