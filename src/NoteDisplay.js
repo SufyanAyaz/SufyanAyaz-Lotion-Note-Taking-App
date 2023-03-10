@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-function NoteDisplay({ note, deleteNote }) {
+function NoteDisplay({ note, num, deleteNote }) {
     const navigate = useNavigate();
     const { noteId } = useParams();
 
