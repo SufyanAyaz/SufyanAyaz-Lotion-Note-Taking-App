@@ -36,6 +36,7 @@ function App() {
       noteId: uuid(),
       title: "Untitled",
       content: "",
+      displayContent: "",
       time: Date.now(),
       noteNum: num
     };
@@ -44,13 +45,14 @@ function App() {
     setNum(num + 1);
   };
 
-  const update = (noteIdentification, newTitle, newContent, newTime) => {
+  const update = (noteIdentification, newTitle, newContent, newDisplayContent, newTime) => {
     const upToDateNotes = note.map((note) => {
       if (note.noteNum == noteIdentification) {
         return {
           noteId: note.noteId,
           title: newTitle,
           content: newContent,
+          displayContent: newDisplayContent,
           time: newTime,
           noteNum: note.noteNum
         }

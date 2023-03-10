@@ -57,7 +57,7 @@ function Layout({ note, createNote, num, currentNote, setCurrentNote }) {
                                         <div className="note-sub">
                                             <h2 className="note-property">{note.title}</h2>
                                             <h3 className="note-property">{formatDate(note.time)}</h3>
-                                            <p className="note-property" dangerouslySetInnerHTML={{ __html: note.content.substring(0, 50) + "..." }}></p>
+                                            <p className="note-property" dangerouslySetInnerHTML={{ __html: note.displayContent.substring(0, 30) + "..." }}></p>
                                         </div>
                                     </div>
                                 </button>
